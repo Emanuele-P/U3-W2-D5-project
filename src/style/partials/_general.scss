@@ -1,0 +1,27 @@
+@mixin cards {
+    min-height: 300px;
+    padding: 1rem;
+    border: 1px transparent solid;
+    color: $dark;
+    transition: transform 0.3s ease;
+    &:hover{
+        @include glass-two()
+       }
+}
+
+@mixin glass {
+background: rgba(255, 255, 255, 0.28);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(7.4px);
+-webkit-backdrop-filter: blur(7.4px);
+}
+
+@mixin glass-two {
+background: rgba(255, 255, 255, 0.2);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(10.1px);
+-webkit-backdrop-filter: blur(10.1px);
+border: 1px solid rgba(255, 255, 255, 0.209);
+}
