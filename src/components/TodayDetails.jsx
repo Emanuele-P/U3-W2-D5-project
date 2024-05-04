@@ -10,19 +10,15 @@ function TodayDetails({ weatherData }) {
   const calculateLocalTime = (offset) => {
     const utcDate = new Date()
     const localDate = new Date(utcDate.getTime() + offset * 1000)
-    let timeString = localDate.toLocaleTimeString()
-
-    let timeWithoutSeconds
-    if (timeString.includes('AM') || timeString.includes('PM')) {
-      timeWithoutSeconds = `${timeString.substring(0, 5)} ${timeString.slice(
-        -2
-      )}`
-    } else {
-      timeWithoutSeconds = timeString.substring(0, 5)
+    const options = {
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: true,
     }
-
-    return timeWithoutSeconds
+    const timeString = localDate.toLocaleTimeString([], options)
+    return timeString
   }
+
   function convertSpeed(speedMps) {
     return (speedMps * 3.6).toFixed(2)
   }
@@ -46,7 +42,7 @@ function TodayDetails({ weatherData }) {
     <>
       <Container className="today">
         <Row>
-          <Col md={4}>
+          <Col md={4} className="mb-3">
             <Card className="card-one">
               <h3>Current Temperature</h3>
               {weatherData ? (
@@ -75,11 +71,23 @@ function TodayDetails({ weatherData }) {
               <hr />
               <div className="d-flex align-items-center justify-content-between">
                 <div className="d-flex flex-column pt-2 gap-3">
-                  <h5>Max temp:</h5>
-                  <h5>Min temp:</h5>
-                  <h5>Humidity: </h5>
-                  <h5>Feels Like:</h5>
-                  <h5>Wind speed:</h5>
+                  <h5>
+                    <i className="bi bi-thermometer-high me-3"></i>Max
+                    temperature:
+                  </h5>
+                  <h5>
+                    <i className="bi bi-thermometer-low me-3"></i>Min
+                    temperature:
+                  </h5>
+                  <h5>
+                    <i className="bi bi-moisture me-3"></i>Humidity:{' '}
+                  </h5>
+                  <h5>
+                    <i className="bi bi-emoji-sunglasses me-3"></i>Feels Like:
+                  </h5>
+                  <h5>
+                    <i className="bi bi-wind me-3"></i>Wind speed:
+                  </h5>
                 </div>
                 <div className="d-flex flex-column align-items-end pt-2 gap-3">
                   <h5>{inCelsius(weatherData.main.temp_max)}°C</h5>

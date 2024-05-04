@@ -73,6 +73,11 @@ i {
         height: 100px;
         background-color: transparent;
         border: none;
+        transition: transform 0.3s;
+        &:hover{
+            cursor: pointer;
+            transform: scale(1.05);
+        }
     }
 }
 
@@ -88,6 +93,19 @@ i {
        @include glass;
        cursor: pointer;
        position: relative;
+
+       &:hover{
+        hr {
+            background-color: $primary;
+            color: $primary;
+        }
+        img {
+            transform: scale(1.1);
+        }
+        span {
+            color: $primary;
+        }
+       }
     }
     .card-one img{
         height: 80px;
@@ -97,6 +115,7 @@ i {
         position: absolute;
         bottom: 30px;
         left: 60%;
+        transition: transform 0.3s;
        }
 
     h3, p {
@@ -104,23 +123,28 @@ i {
         font-weight: 500;
     }
     hr {
-        color: $info;
-        height: 3px;
-        background-color: $info;
-        border-radius: 75px;
-        margin: 10px 0 0;
+       @include hr
     }
     span, h6 {
         font-family: "Bebas Neue", sans-serif;
+    }
+    h5 {
+        margin: 0;
+        &:hover {
+            color: $primary-emphasis;
+        }
     }
     span {
         text-align: center;
         font-size: 120px;
         font-weight: 900;
+        transition: color 0.3s;
     }
-    h5 {
-        margin: 0;
-    }
+    @media (max-width: 991px) {
+        span {
+          font-size: 110px;
+        }
+      }
 }
 
 //error 
@@ -142,5 +166,51 @@ i {
         @include glass;
         padding: 2rem 3rem;
         min-height: 250px;
+    }
+}
+
+//more
+
+.more-cards {
+
+    .card {
+        @include glass;
+        @include cards;
+        min-height: 280px;
+        color: $dark-emphasis;
+        &:hover {
+            hr {
+                background-color: $primary;
+                color: $primary;
+            }
+            h2,h5,p{
+                color: $dark;
+            }
+            img {
+                transform: scale(1.1);
+            }
+        }
+    }
+    h2 {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 70px;
+    }
+    h5{
+        font-weight: 800;
+    }
+    p, h2 {
+        margin: 0;
+    }
+    hr {
+    @include hr;
+    margin: 4px 0 10px 0;
+    }
+
+    img {
+        height: 80px;
+        width: 80px;
+        background-color: transparent;
+        border: none;
+        transition: transform 0.3s ease;
     }
 }

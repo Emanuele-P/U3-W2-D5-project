@@ -1,5 +1,14 @@
 import { useState } from 'react'
-import { Button, Container, Form, Nav, Navbar, Spinner } from 'react-bootstrap'
+import {
+  Button,
+  Col,
+  Container,
+  Form,
+  Nav,
+  Navbar,
+  Row,
+  Spinner,
+} from 'react-bootstrap'
 import TopBar from './TopBar'
 import NoContent from './NoContent'
 import NotFound from './NotFound'
@@ -60,31 +69,76 @@ function CustomNavbar() {
   return (
     <>
       <Container>
-        <Navbar className="justify-content-between">
-          <Form className="d-flex">
-            <Form.Control
-              id="searchForm"
-              type="text"
-              placeholder="Enter the location"
-              value={searchValue}
-              onChange={handleChange}
-            />
-            <Button className="search-btn" type="submit" onClick={handleSubmit}>
-              Search
-            </Button>
-          </Form>
-          <div className="ms-auto d-flex align-items-center gap-5">
-            <Nav.Link href="" className="selected">
-              Home
-            </Nav.Link>
-            <Nav.Link href="">News</Nav.Link>
-            <Nav.Link href="">Live</Nav.Link>
-            <Navbar.Brand href="" style={{ color: '$dark', cursor: 'pointer' }}>
-              <i className="bi bi-umbrella-fill"></i>
-            </Navbar.Brand>
-          </div>
+        <Navbar className="d-block">
+          <Row className="d-md-flex justify-content-between">
+            <Col md={5} lg={4} className="d-none d-md-block">
+              <Form className="d-flex align-items-center">
+                <Form.Control
+                  id="searchForm"
+                  type="text"
+                  placeholder="Enter the location"
+                  value={searchValue}
+                  onChange={handleChange}
+                />
+                <Button
+                  className="search-btn"
+                  type="submit"
+                  onClick={handleSubmit}
+                >
+                  Search
+                </Button>
+              </Form>
+            </Col>
+            <Col
+              xs={12}
+              md={7}
+              lg={8}
+              className="d-flex justify-content-md-end"
+            >
+              <div className="d-flex align-items-center gap-3 gap-md-5 justify-content-md-end">
+                <Navbar.Brand
+                  href=""
+                  style={{ color: '$dark', cursor: 'pointer' }}
+                  className="d-md-none"
+                >
+                  <i className="bi bi-umbrella-fill"></i>
+                </Navbar.Brand>
+                <Nav.Link href="" className="selected">
+                  Home
+                </Nav.Link>
+                <Nav.Link href="">News</Nav.Link>
+                <Nav.Link href="">Live</Nav.Link>
+                <Navbar.Brand
+                  href=""
+                  style={{ color: '$dark', cursor: 'pointer' }}
+                  className="d-none d-md-block"
+                >
+                  <i className="bi bi-umbrella-fill"></i>
+                </Navbar.Brand>
+              </div>
+            </Col>
+            <Col xs={12} className="d-md-none mt-5">
+              <Form className="d-flex">
+                <Form.Control
+                  id="searchForm"
+                  type="text"
+                  placeholder="Enter the location"
+                  value={searchValue}
+                  onChange={handleChange}
+                />
+                <Button
+                  className="search-btn"
+                  type="submit"
+                  onClick={handleSubmit}
+                >
+                  Search
+                </Button>
+              </Form>
+            </Col>
+          </Row>
         </Navbar>
       </Container>
+
       {isLoading && (
         <NotFound
           message={

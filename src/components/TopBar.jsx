@@ -4,6 +4,7 @@ import WeatherIcon from './WeatherIcon'
 import TodayDetails from './TodayDetails'
 import NoContent from './NoContent'
 import NotFound from './NotFound'
+import MoreCards from './MoreCards'
 
 function TopBar({ locationData }) {
   const [weather, setWeather] = useState(null)
@@ -63,17 +64,20 @@ function TopBar({ locationData }) {
           {locationData[0].state || locationData[0].country}
         </h1>
         <div className="d-flex gap-3">
-          <div className="d-flex align-items-center">
+          <div className="d-none d-md-flex align-items-center">
             <WeatherIcon iconCode={weather.weather[0].icon} />
           </div>
           <div className="text-end">
             <h2>Weather</h2>
             <h4>Today</h4>
-            <h4>{weather.weather[0].main}</h4>
+            <h4 className="text-primary">{weather.weather[0].main}</h4>
           </div>
         </div>
       </Container>
       {weather && <TodayDetails weatherData={weather} />}
+      {weather && (
+        <MoreCards lat={locationData[0].lat} lon={locationData[0].lon} />
+      )}
     </>
   )
 }
