@@ -57,7 +57,7 @@ i {
     background-color: transparent;
     padding: 1rem;
     border-radius: 14px;
-    margin-block: 3rem 2rem;
+    margin-block: 2rem;
     color: $dark;
     letter-spacing: -1px;
     h1 {
@@ -166,6 +166,7 @@ i {
         @include glass;
         padding: 2rem 3rem;
         min-height: 250px;
+        min-width: 100%;
     }
 }
 
