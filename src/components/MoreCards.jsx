@@ -34,7 +34,7 @@ function MoreCards({ lat, lon }) {
             const date = new Date(item.dt * 1000)
             return date.getUTCHours() === 12
           })
-          .slice(0, 4)
+          .slice(0, 5)
 
         setForecast(dailyData)
         setLoading(false)
@@ -65,9 +65,12 @@ function MoreCards({ lat, lon }) {
   return (
     <>
       <Container className="more-cards mb-5 mt-4 mt-md-0">
-        <Row>
+        <Row xs={1} md={2} lg={5}>
           {forecast.map((card, i) => (
-            <Col key={`index-${i}`} sm={6} lg={3}>
+            <Col
+              key={`index-${i}`}
+              className={`${i === 4 ? 'd-none d-lg-block' : ''}`}
+            >
               <Card className="mt-3">
                 <div className="d-flex justify-content-between">
                   <h5>
