@@ -11,8 +11,8 @@ function TopBar({ locationData }) {
   const [error, setError] = useState(false)
 
   useEffect(() => {
-    if (locationData && locationData[0]) {
-      fetchWeather(locationData[0].lat, locationData[0].lon)
+    if (locationData && locationData.lat && locationData.lon) {
+      fetchWeather(locationData.lat, locationData.lon)
     } else {
       setError(true)
     }
@@ -60,8 +60,8 @@ function TopBar({ locationData }) {
     <>
       <Container className="top-bar d-flex justify-content-between">
         <h1>
-          {locationData[0].name},<br />
-          {locationData[0].state || locationData[0].country}
+          {locationData.name},<br />
+          {locationData.state || locationData.country}
         </h1>
         <div className="d-flex gap-3">
           <div className="d-none d-md-flex align-items-center">
@@ -75,9 +75,7 @@ function TopBar({ locationData }) {
         </div>
       </Container>
       {weather && <TodayDetails weatherData={weather} />}
-      {weather && (
-        <MoreCards lat={locationData[0].lat} lon={locationData[0].lon} />
-      )}
+      {weather && <MoreCards lat={locationData.lat} lon={locationData.lon} />}
     </>
   )
 }

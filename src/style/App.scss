@@ -52,7 +52,6 @@ i {
 
 //topbar
 .top-bar {
-    user-select: none;
 
     background-color: transparent;
     padding: 1rem;
@@ -214,4 +213,20 @@ i {
         border: none;
         transition: transform 0.3s ease;
     }
+}
+
+//list 
+.list-group {
+    margin-top: 10px;
+}
+.list-group-item {
+    color: $dark;
+    
+    &:hover {
+        cursor: pointer;
+        background-color: $primary;
+        color: $light;
+
+    }
+
 }
